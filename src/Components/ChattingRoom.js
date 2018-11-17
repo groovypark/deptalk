@@ -7,10 +7,9 @@ import axios from 'axios';
 class ChattingRoom extends Component {
   constructor(props) {
     super(props);
-    // console.log(this.props);
-    console.log(this.props.location.state.user[0].user)
+    console.log(this.props);
     this.state = {
-      user: this.props.location.state.user[0].user,
+      user: this.props.location.state.user,
       // id: 2,
       // chattingList: [{
       //     id: 0,
@@ -48,12 +47,13 @@ class ChattingRoom extends Component {
       // 유저가 채팅방에 접속함을 알림
       this.socket.send(JSON.stringify({
         type: 'active_user',
-        user: '재원',
+        user: this.state.user,
       }))
     }
 
     this.socket.onmesssage = event => {
       console.log(event)
+      this.setState({ chattingList: event });
     }
   }
 
@@ -61,9 +61,8 @@ class ChattingRoom extends Component {
     // let id = 0;
     const newMessage = {
       // id: id++,
-      type: 'send_message',
-      user: '재원',
-      message: newChat
+      user: this.state.user,
+      text: newChat
     }
     this.setState({ message: newMessage });
 
@@ -72,6 +71,7 @@ class ChattingRoom extends Component {
     }
   }
   render() {
+    console.log(this.state)
     return (
       <div>
         <p>{this.props.location.state.user[0].nickname}</p>
