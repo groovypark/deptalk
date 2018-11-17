@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import UserInfo from './UserInfo';
 
-export default 
+export default
 
 class UserInfoList extends Component {
   static defaultProps = {
@@ -23,9 +23,9 @@ class UserInfoList extends Component {
     );
 
     return (
-      <div>
-        {list}    
-      </div>
+      <ul className="user__list">
+        {list}
+      </ul>
     );
   }
 }

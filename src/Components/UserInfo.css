@@ -1,9 +1,12 @@
-.user__list {
-  margin-bottom: 12px;
+.user__item {
+  margin-bottom: 16px;
+  padding: 0 16px 16px;
   font-size: 15px;
+  color: #544c4c;
+  border-bottom: 1px solid #d6cfcf;
 }
 .user__name {
-  font-size: 15px;
+
 }
 
 .user__name::after {
@@ -11,7 +14,7 @@
   display: inline-block;
   width: 6px;
   height: 6px;
-  margin-left: 4px;
+  margin-left: 6px;
   vertical-align: top;
   border-radius: 50%;
   background: #03cc7c;

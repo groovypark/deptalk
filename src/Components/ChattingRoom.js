@@ -78,7 +78,10 @@ class ChattingRoom extends Component {
     console.log('check', this.state.list);
     return (
       <div className="room__container">
-        <p className="user__self">{this.state.user}</p>
+        <header>
+          <p className="user__self">{this.state.user}</p>
+          <button className="user__exit_button"><span className="a11y-hidden">exit</span></button>
+        </header>
         <div className="room__chat">
           <div className="room__userlist">
             <UserInfoList data={this.state.userList}/>

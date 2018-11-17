@@ -3,7 +3,7 @@ import './UserInfo.css';
 
 function UserInfo(props) {
   return (
-    <li className="user__list"><span className="user__name">{props.info.user}</span></li>
+    <li className="user__item"><span className="user__name">{props.info.user}</span></li>
   );
 }
 
