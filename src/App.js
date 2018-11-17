@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
-// import logo from './logo.svg';
 import './App.css';
-import AddUser from './Components/AddUser';
+import { Route } from 'react-router-dom';
+import AddUser from './components/AddUser';
+import ChattingRoom from './components/ChattingRoom';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <AddUser />
+        <Route exact path="/" component={AddUser}/>
+        <Route path="/chatting" component={ChattingRoom}/>
       </div>
     );
   }
