@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-export default class PhoneInfo extends Component {
+export default class ChatInfo extends Component {
   static defaultProps = {
     info: {
       name: '이름',
