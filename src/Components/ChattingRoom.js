@@ -1,21 +1,25 @@
-import React from 'react'
+import React, { Component } from 'react'
+import TextArea from './TextArea';
+import ChattingList from './ChattingList'
 
-function ChattingRoom(props) {
-  const chattingList = []
-  chattingList.push(props)
-  return (
-    <ul>
-      {chattingList.map((chat) =>
-        <ListItem key={chat.toString()}
-                  value={chat} />
-
-      )}
-    </ul>
-  );
+export default class ChattingRoom extends Component {
+  state = {
+    chattingList: []
+  }
+  handleCreate = (chat) => {
+    const { chattingList } = this.state;
+    this.setState({
+      chattingList: chattingList.concat({
+        ...chat
+      })
+    })
+  }
+  render() {
+    return (
+      <div>
+        <TextArea onCreate={this.handleCreate}/>
+        <ChattingList data={this.state.chattingList}/>
+      </div>
+    )
+  }
 }
-
-function ListItem(props) {
-  return <li>{props.value}</li>;
-}
-
-export default ChattingRoom;
