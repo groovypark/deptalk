@@ -19,12 +19,6 @@ class AddUser extends Component {
   addUser(e) {
     if (e.key === 'Enter') {
       e.preventDefault();
-      const users = [...this.state.users];
-      let id = 0;
-      users.push({id: id++, nickname: e.target.value});
-      this.setState({users});
-      this.props.onSubmit(users);
-      // console.log('users', users);
     }
   }
   render() {
