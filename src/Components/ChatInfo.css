@@ -13,6 +13,7 @@
 .message__text {
   display: inline-block;
   width: auto;
+  height: auto;
   margin-bottom: 18px;
   font-size: 16px;
   color: #544c4c;
