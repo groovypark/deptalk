@@ -83,13 +83,18 @@ class ChattingRoom extends Component {
       this.socket.send(JSON.stringify(newMessage));
     }
   }
+
+  closeChatting() {
+    this.socket.close()
+  }
+
   render() {
     return (
       <div className="room__container">
         <header>
           <p className="user__self">{this.state.user}</p>
           <Link to={{pathname: '/'}}>
-            <button className="user__exit_button"><span className="a11y-hidden">exit</span></button>
+            <button className="user__exit_button" onClick={this.closeChatting.bind(this)}><span className="a11y-hidden">exit</span></button>
           </Link>
         </header>
         <div className="room__chat">
