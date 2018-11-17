@@ -96,12 +96,14 @@ class ChattingRoom extends Component {
           <div className="room__userlist">
             <UserInfoList data={this.state.userList}/>
           </div>
-          <div className="room__chatlist">
-            <ChatInfoList data={this.state.list} />
+          <div className="room__chatarea">
+            <div className="room__chatlist">
+              <ChatInfoList data={this.state.list} />
+            </div>
+            <div className="room__textinput">
+              <ChatForm onSubmit={this.sendMessage.bind(this)} />
+            </div>
           </div>
-        </div>
-        <div className="room__textinput">
-          <ChatForm onSubmit={this.sendMessage.bind(this)} />
         </div>
       </div>
     )

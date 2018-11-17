@@ -3,9 +3,11 @@
   height: auto;
   padding: 12px 16px;
   background: #eee;
+  background: #fff;
 }
 
 .chat__input_area {
+  width: 100%;
   border: 1px solid #ccc;
   outline: none;
   resize: none;
