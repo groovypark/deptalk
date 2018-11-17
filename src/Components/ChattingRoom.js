@@ -63,12 +63,14 @@ class ChattingRoom extends Component {
     console.log('check', this.state.list);
     return (
       <div className="room__container">
-        <p>{this.state.user}</p>
-        <div className="room__userlist">
-          <UserInfoList data={this.state.userList}/>
-        </div>
-        <div className="room__chatlist">
-          <ChatInfoList data={this.state.list} />
+        <p className="user__self">{this.state.user}</p>
+        <div className="room__chat">
+          <div className="room__userlist">
+            <UserInfoList data={this.state.userList}/>
+          </div>
+          <div className="room__chatlist">
+            <ChatInfoList data={this.state.list} />
+          </div>
         </div>
         <div className="room__textinput">
           <ChatForm onSubmit={this.sendMessage.bind(this)} />

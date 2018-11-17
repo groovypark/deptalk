@@ -1,0 +1,18 @@
+.user__list {
+  margin-bottom: 12px;
+  font-size: 15px;
+}
+.user__name {
+  font-size: 15px;
+}
+
+.user__name::after {
+  content: '';
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  margin-left: 4px;
+  vertical-align: top;
+  border-radius: 50%;
+  background: #03cc7c;
+}
