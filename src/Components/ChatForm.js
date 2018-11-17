@@ -2,20 +2,18 @@ import React, { Component } from 'react'
 import Textarea from "react-textarea-autosize";
 
 export default class ChatForm extends Component {
-   state = {
-    chat: ''
-  }
+   state = {}
   handleChange = (e) => {
     this.setState({
-      chat: e.target.value
+      text: e.target.value
     })
   }
   handleSubmit = (e) => {
     e.preventDefault();
-    this.props.onCreate(this.state);
     this.setState({
-      chat: ''
-    })
+      text: e.target.value
+    });
+    this.props.onSubmit(this.state);
   }
   render() {
     return (

@@ -7,9 +7,7 @@ import AddUser from './Components/AddUser';
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-
-    }
+    this.state = {}
   }
   getUsers(newUser) {
     this.setState({ user: newUser });
