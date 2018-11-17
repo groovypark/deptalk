@@ -23,7 +23,6 @@ class App extends Component {
   }
   render() {
     this.isInputActive();
-    console.log('value',this.state.value)
     return (
       <div className="container">
         <div className="user__container">

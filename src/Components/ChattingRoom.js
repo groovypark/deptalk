@@ -4,22 +4,19 @@ import ChatInfoList from './ChatInfoList'
 import UserInfoList from './UserInfoList';
 import './ChattingRoom.css';
 import axios from 'axios';
+import { Link } from "react-router-dom";
 
 class ChattingRoom extends Component {
   constructor(props) {
     super(props);
-    // console.log(this.props);
     this.state = {
       user: this.props.location.state.user,
     }
-
-    // this.sendMessage = this.sendMessage.bind(this);
   }
 
   componentDidMount() {
     // 소켓 연결 전에 이전 메세지들 불러오기
     axios.get(`http://125.132.216.192:8000/api/chat/1/${this.state.user}`).then(res => {
-      console.log(res.data);
       const data = res.data;
       const list = []
       data.forEach(msg => {
@@ -54,13 +51,11 @@ class ChattingRoom extends Component {
       let newState = Object.assign(this.state, {
         list: MessageList
       });
-      console.log('eeestate', newState)
       this.setState(newState);
     }
   }
 
   sendMessage(newChat) {
-    // let id = 0;
     const newMessage = {
       user: this.state.user,
       message: newChat,
@@ -68,19 +63,18 @@ class ChattingRoom extends Component {
       is_owner: false,
     }
     this.setState({ message: newMessage });
-    console.log('in room', newMessage);
     if (this.socket.readyState === WebSocket.OPEN) {
       this.socket.send(JSON.stringify(newMessage));
     }
   }
   render() {
-    console.log('check state', this.state);
-    console.log('check', this.state.list);
     return (
       <div className="room__container">
         <header>
           <p className="user__self">{this.state.user}</p>
-          <button className="user__exit_button"><span className="a11y-hidden">exit</span></button>
+          <Link to={{pathname: '/'}}>
+            <button className="user__exit_button"><span className="a11y-hidden">exit</span></button>
+          </Link>
         </header>
         <div className="room__chat">
           <div className="room__userlist">
