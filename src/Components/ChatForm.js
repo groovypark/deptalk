@@ -5,10 +5,13 @@ import './ChatForm.css';
 export default class ChatForm extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      text: ''
+    };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleKeyPress = this.handleKeyPress.bind(this);
   }
   state = {}
   handleChange = (e) => {
@@ -16,21 +19,40 @@ export default class ChatForm extends Component {
       text: e.target.value
     })
   }
+
   handleSubmit = (e) => {
     e.preventDefault();
     this.setState({
       text: e.target.value
     });
-  // console.log('in chatform', this.state);
     this.props.onSubmit(this.state.text);
+    this.setState({
+      text: ''
+    })
   }
+
+  handleKeyPress = (e) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      this.handleSubmit(e);
+    } else if (e.key === 'Enter' && e.shiftKey) {
+
+    } 
+  }
+
   render() {
     const text = this.state.text;
-    console.log(this.state);
+
     return (
-      <form className="chat__input_container" onSubmit={this.handleSubmit}>
-        {/* </form>/<h1 value={this.state.name} onChange={this.handleChange} name="name"/> </h1> */}
-        <Textarea className="chat__input_area" value={this.state.text} onChange={this.handleChange} name="chat"/>
+      <form className="chat__input_container" 
+        onSubmit={this.handleSubmit}
+      >
+        <Textarea className="chat__input_area" 
+          value={this.state.text} 
+          onChange={this.handleChange} 
+          onKeyUp={this.handleKeyPress} 
+          name="chat"
+        />
         <button className={ text !== undefined && text.length > 1  ? 'chat__input_button_active' : 'chat__input_button' } type="submit">등록</button>
       </form>
     );

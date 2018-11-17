@@ -71,6 +71,7 @@
   flex: 1 1 auto;
   background: #efeaea;
   padding: 32px 0;
+  overflow-y: scroll;
 }
 
 /* 채팅 메세지 리스트 스타일  */
@@ -82,8 +83,9 @@
 .room__chatlist {
   width: 100%;
   height: 100%;
-  padding: 32px 40px;
+  padding: 32px 40px 63px 40px;
   background: #fdfcfc;
+  overflow-y: scroll;
 }
 
 /* 채팅 인풋 스타일  */

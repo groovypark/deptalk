@@ -5,3 +5,18 @@
   color: #544c4c;
   border-bottom: 1px solid #d6cfcf;
 }
+
+.user__item::after {
+  content: '';
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  margin-left: 6px;
+  vertical-align: top;
+  border-radius: 50%;
+  background: #dcdcdc;
+}
+
+.user__item.user__item__active::after {
+  background: #03cc7c;
+}

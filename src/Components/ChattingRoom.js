@@ -59,6 +59,7 @@ class ChattingRoom extends Component {
 
     this.socket.onmessage = event => {
       let data = JSON.parse(event.data);
+      
       data = Object.assign({}, data, {
         is_owner: this.state.user === data.user
       })
@@ -71,6 +72,17 @@ class ChattingRoom extends Component {
       });
       this.setState(newState);
     }
+  }
+
+  scrollToBottom() {
+    const scrollHeight = this.messageList.scrollHeight;
+    const height = this.messageList.clientHeight;
+    const maxScrollTop = scrollHeight - height;
+    this.messageList.scrollTop = maxScrollTop > 0 ? maxScrollTop : 0;
+  }
+
+  componentDidUpdate() {
+    this.scrollToBottom();
   }
 
   sendMessage(newChat) {
@@ -103,7 +115,9 @@ class ChattingRoom extends Component {
             <UserInfoList data={this.state.userList}/>
           </div>
           <div className="room__chatarea">
-            <div className="room__chatlist">
+            <div className="room__chatlist" ref={(div) => {
+              this.messageList = div;
+            }}>
               <ChatInfoList data={this.state.list} />
             </div>
             <div className="room__textinput">
