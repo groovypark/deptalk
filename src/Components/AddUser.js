@@ -10,7 +10,7 @@ class AddUser extends Component {
     }
   }
   handleChange(e) {
-    console.log('typing', e.target.value);
+    // console.log('typing', e.target.value);
     this.setState({
       value: e.target.value
     })
@@ -33,7 +33,7 @@ class AddUser extends Component {
         <h1 className="user__title">닉네임을 입력해주세요.</h1>
         <form className="user__form">
           <label className="a11y-hidden" htmlFor="nickname">Nickname</label>
-          <input className="user__input" type="text" id="nickname" value={this.props.value} onKeyPress={this.addUser.bind(this)} onChange={this.handleChange.bind(this)} minLength="1" maxLength="8" required />
+          <input className="user__input" type="text" id="nickname" value={this.props.value} onKeyPress={this.addUser.bind(this)} onChange={this.handleChange.bind(this)} minLength="1" maxLength="8" autocomplete="off" required />
         </form>
       </Fragment>
     );
