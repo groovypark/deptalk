@@ -7,14 +7,10 @@ class AddUser extends Component {
     this.state = {
       value: '',
       users: []
-    }
+    };
   }
   handleChange(e) {
-    // console.log('typing', e.target.value);
-    this.setState({
-      value: e.target.value
-    })
-    this.props.onChange(this.state.value);
+    this.props.onChange(e.target.value);
   }
   addUser(e) {
     if (e.key === 'Enter') {
