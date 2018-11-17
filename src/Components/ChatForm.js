@@ -21,8 +21,11 @@ export default class ChatForm extends Component {
     this.setState({
       text: e.target.value
     });
-  // console.log('in chatform', this.state);
     this.props.onSubmit(this.state.text);
+
+    // 마지막 메세지 리스트로 페이지 스크롤 (테스트 해 보지 않음...)
+    const pageAdjust = document.querySelector('.last__item');
+    pageAdjust.scrollIntoView({block: 'end'});
   }
   render() {
     const text = this.state.text;

@@ -3,6 +3,7 @@ import ChatForm from './ChatForm';
 import ChatInfoList from './ChatInfoList'
 import UserInfoList from './UserInfoList';
 import './ChattingRoom.css';
+// import ScrollableAnchor from 'react-scrollable-anchor';
 import axios from 'axios';
 import { Link } from "react-router-dom";
 

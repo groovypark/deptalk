@@ -82,8 +82,9 @@
 .room__chatlist {
   width: 100%;
   height: 100%;
-  padding: 32px 40px;
+  padding: 32px 40px 100px;
   background: #fdfcfc;
+  overflow: auto;
 }
 
 /* 채팅 인풋 스타일  */
