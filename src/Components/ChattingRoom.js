@@ -17,7 +17,7 @@ class ChattingRoom extends Component {
 
   componentDidMount() {
     // 소켓 연결 전에 이전 메세지들 불러오기
-    axios.get('http://125.132.216.192:8000/api/chat/1').then(res => {
+    axios.get(`http://125.132.216.192:8000/api/chat/1/${this.state.user}`).then(res => {
       console.log(res.data);
       const data = res.data;
       const list = []
