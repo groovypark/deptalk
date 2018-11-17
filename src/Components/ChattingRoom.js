@@ -43,14 +43,29 @@ class ChattingRoom extends Component {
     }
 
     this.socket.onmessage = event => {
-      console.log('event', event);
+      let data = JSON.parse(event.data);
+      data = Object.assign({}, data, {
+        is_owner: this.state.user === data.user
+      })
+
+      let MessageList = this.state.list;
+      MessageList.push(data);
+
+      let newState = Object.assign(this.state, {
+        list: MessageList
+      });
+      console.log('eeestate', newState)
+      this.setState(newState);
     }
   }
 
   sendMessage(newChat) {
     // let id = 0;
     const newMessage = {
-      message: newChat
+      user: this.state.user,
+      message: newChat,
+      is_active: true,
+      is_owner: false,
     }
     this.setState({ message: newMessage });
     console.log('in room', newMessage);
