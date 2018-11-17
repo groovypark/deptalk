@@ -8,6 +8,7 @@ class ChattingRoom extends Component {
   constructor(props) {
     super(props);
     // console.log(this.props);
+    console.log(this.props.location.state.user[0].user)
     this.state = {
       user: this.props.location.state.user[0].user,
       // id: 2,
@@ -31,7 +32,7 @@ class ChattingRoom extends Component {
       // }]
     }
 
-    this.handeCreate = this.handleCreate.bind(this);
+    this.sendMessage = this.sendMessage.bind(this);
   }
 
   componentDidMount() {
@@ -43,47 +44,36 @@ class ChattingRoom extends Component {
     })
 
     this.socket = new WebSocket('ws://125.132.216.192:8000/chat/1');
-    if (this.socket.readyState === WebSocket.OPEN) {
-      console.log('connected!');
-    } else if (this.socket.readyState === WebSocket.CONNECTING) {
-      console.log('connecting...');
-    }
-  }
-
-  handleCreate = (chat) => {
-    const { chattingList } = this.state;
-
-    // 소켓이 연결되지 않은 경우 에러 메세지 띄우기
-    if (this.socket.readyState === WebSocket.OPEN) {
+    this.socket.onopen = event => {
+      // 유저가 채팅방에 접속함을 알림
       this.socket.send(JSON.stringify({
-        message: chat,
-      }));
+        type: 'active_user',
+        user: '재원',
+      }))
     }
 
-    this.setState({
-      chattingList: chattingList.concat({
-        id: this.id++, ...chat
-      })
-    })
-  }
-  sendMessage(newChat) {
-    let id = 0;
-    const newMessage = {
-      id: id++,
-      user: this.state.user,
-      text: newChat
+    this.socket.onmesssage = event => {
+      console.log(event)
     }
-    this.setState({ message: newMessage});
+  }
+
+  sendMessage(newChat) {
+    // let id = 0;
+    const newMessage = {
+      // id: id++,
+      type: 'send_message',
+      user: '재원',
+      message: newChat
+    }
+    this.setState({ message: newMessage });
 
     if (this.socket.readyState === WebSocket.OPEN) {
-      this.socket.send(JSON.stringify({ newMessage }));
+      this.socket.send(JSON.stringify(newMessage));
     }
   }
   render() {
     return (
       <div>
-        {/* <ChatForm onCreate={this.handleCreate} />
-        <ChatInfoList data={this.state.chattingList} /> */}
         <p>{this.props.location.state.user[0].nickname}</p>
         <div style={{width:'30%', float:'left'}}>
           <UserInfoList data={this.state.userList}/>
@@ -92,7 +82,7 @@ class ChattingRoom extends Component {
           <ChatInfoList data={this.state.chattingList}/>
         </div>
         <div style={{position:'absolute', bottom:'0', width:'100%', height:'70px'}}>
-          <ChatForm onSubmit={this.sendMessage.bind(this)} />
+          <ChatForm onSubmit={this.sendMessage} />
         </div>
       </div>
     )
