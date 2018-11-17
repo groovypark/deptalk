@@ -44,9 +44,11 @@
   color: #fff;
   text-shadow: 0 2px rgba(18,167,110,.32);
   background: #03cc7c;
+  transition: all 0.22s cubic-bezier(0.4, 0.27, 0.8, 0.55)
 }
 
 .button__chat_active:hover {
   background: #01ad79;
+  transition: all 0.32s cubic-bezier(0.4, 0.27, 0.8, 0.55)
 }
 

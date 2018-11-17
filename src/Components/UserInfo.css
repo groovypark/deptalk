@@ -5,10 +5,8 @@
   color: #544c4c;
   border-bottom: 1px solid #d6cfcf;
 }
-.user__name {
 
-}
-
+/* 유저 로그인 상태 표시 */
 .user__name::after {
   content: '';
   display: inline-block;
