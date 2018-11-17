@@ -1,0 +1,22 @@
+.room__container {
+  display: flex;
+  flex-flow: row wrap;
+  position: relative;
+  width: 100%;
+  height: 100vh;
+}
+.room__userlist {
+  flex: 1 1 auto;
+  background: #eee;
+}
+.room__chatlist {
+  flex: 0 1 80%;
+  background: #ccc;
+}
+
+/* 채팅 인풋 스타일  */
+.room__textinput {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}

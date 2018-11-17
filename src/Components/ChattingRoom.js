@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ChatForm from './ChatForm';
 import ChatInfoList from './ChatInfoList'
 import UserInfoList from './UserInfoList';
+import './ChattingRoom.css';
 import axios from 'axios';
 
 class ChattingRoom extends Component {
@@ -25,7 +26,8 @@ class ChattingRoom extends Component {
         const messages = {
           user: msg.user,
           message: msg.message,
-          is_active: msg.is_active
+          is_active: msg.is_active,
+          is_owner: msg.is_owner
         }
         list.push(messages);
       })
@@ -68,15 +70,15 @@ class ChattingRoom extends Component {
     console.log('check state', this.state);
     console.log('check', this.state.list);
     return (
-      <div>
-        <p>{this.props.location.state.user[0].nickname}</p>
-        <div style={{width:'30%', float:'left'}}>
+      <div className="room__container">
+        <p>{this.state.user}</p>
+        <div className="room__userlist">
           <UserInfoList data={this.state.userList}/>
         </div>
-        <div style={{width:'70%', float:'right'}}>
+        <div className="room__chatlist">
           <ChatInfoList data={this.state.list} />
         </div>
-        <div style={{position:'absolute', bottom:'0', width:'100%', height:'70px'}}>
+        <div className="room__textinput">
           <ChatForm onSubmit={this.sendMessage.bind(this)} />
         </div>
       </div>

@@ -1,13 +1,28 @@
 .message__item {
-  margin-bottom: 16px;
-  padding: 6px 12px;
-  font-size: 17px;
-  background: #ccc;
-  border-radius: 10px;
+  /* display: inline-block; */
+  letter-spacing: -.2px;
 }
 
+.message__user {
+  display: block;
+  padding-bottom: 6px;
+  font-size: 14px;
+  color: #8a8282;
+}
+
+.message__text {
+  display: inline-block;
+  width: auto;
+  margin-bottom: 18px;
+  font-size: 16px;
+  color: #544c4c;
+  background: #d6cfcf;
+  border-radius: 16px;
+  padding: 10px 16px;
+}
 
 .is_self {
   color: #01ad79;
   background: #fff;
+  border: 1px solid #d6cfcf;
 }
