@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import { Redirect } from 'react-router-dom';
 
 class AddUser extends Component {
   constructor(props) {
@@ -8,9 +7,6 @@ class AddUser extends Component {
       value: '',
       users: []
     }
-
-    this.handleChange = this.handleChange.bind(this);
-    this.addUser = this.addUser.bind(this);
   }
 
   handleChange(e) {
@@ -27,14 +23,13 @@ class AddUser extends Component {
       users.push({id: id++, nickname: e.target.value});
       this.setState({users});
       console.log('users', users);
-      // return <Redirect to='/chattingroom' />
     }
   }
   render() {
     return (
       <form>
         <label htmlFor="nickname">Nickname</label>
-        <input className="form__input" type="text" id="nickname" value={this.state.value} minLength="1" maxLength="8" onChange={this.handleChange} onKeyPress={this.addUser} required />
+        <input className="form__input" type="text" id="nickname" value={this.state.value} minLength="1" maxLength="8" onChange={this.handleChange.bind(this)} onKeyPress={this.addUser.bind(this)} required />
       </form>
     );
   }
