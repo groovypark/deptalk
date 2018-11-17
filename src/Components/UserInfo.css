@@ -5,15 +5,3 @@
   color: #544c4c;
   border-bottom: 1px solid #d6cfcf;
 }
-
-/* 유저 로그인 상태 표시 */
-.user__name::after {
-  content: '';
-  display: inline-block;
-  width: 6px;
-  height: 6px;
-  margin-left: 6px;
-  vertical-align: top;
-  border-radius: 50%;
-  background: #03cc7c;
-}
