@@ -11,6 +11,7 @@ class ChattingRoom extends Component {
     super(props);
     this.state = {
       user: this.props.location.state.user,
+      userList: [],
     }
   }
 
@@ -18,16 +19,17 @@ class ChattingRoom extends Component {
     // 소켓 연결 전에 참가자들 불러오기
     axios.get(`http://125.132.216.192:8000/api/chat/1/user/list`).then(res => {
       const data = res.data;
-      const list = [];
+      const userList = [];
       data.forEach(item => {
         const user = {
           name: item.name,
+          is_active: item.is_active
         }
-        list.push(user);
+        userList.push(user);
       })
 
       this.setState({
-        'userList': list
+        userList
       })
     })
 
@@ -83,10 +85,9 @@ class ChattingRoom extends Component {
       this.socket.send(JSON.stringify(newMessage));
     }
   }
-
-  closeChatting() {
-    this.socket.close()
-  }
+   closeChatting() {
+     this.socket.close()
+   }
 
   render() {
     return (
