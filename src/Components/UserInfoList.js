@@ -7,11 +7,11 @@ class UserInfoList extends Component {
   static defaultProps = {
     data: [{
           id: 0,
-          user: '비버',
+          name: '비버',
         },
         {
           id: 1,
-          user: '수빈',
+          name: '수빈',
         }
       ]
   }
