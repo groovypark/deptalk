@@ -1,6 +1,12 @@
 .message__item {
   /* display: inline-block; */
   letter-spacing: -.2px;
+  display: flex;
+  flex-direction: column;
+}
+
+.message__item__active {
+  align-items: flex-end;
 }
 
 .message__user {
@@ -12,7 +18,7 @@
 
 .message__text {
   display: inline-block;
-  width: auto;
+  width: max-content;
   height: auto;
   margin-bottom: 18px;
   font-size: 16px;
