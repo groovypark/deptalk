@@ -5,16 +5,21 @@ import AddUser from './Components/AddUser';
 // import ChattingRoom from './components/ChattingRoom';
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+
+    }
+  }
+  getUsers(newUser) {
+    this.setState({ user: newUser });
+  }
   render() {
     return (
       <Fragment>
-        <AddUser/>
-        <Link to="chatting">채팅룸 입장</Link>
+        <AddUser onChange={this.getUsers.bind(this)} />
+        <Link to={{pathname: '/chatting', state: {user: this.state.user} }}>채팅룸 입장</Link>
       </Fragment>
-      // <Switch>
-      //   <Route exact path="/" component={AddUser}/>
-      //   <Route path="/chatting" component={ChattingRoom}/>
-      // </Switch>
     );
   }
 }

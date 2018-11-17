@@ -8,7 +8,6 @@ class AddUser extends Component {
       users: []
     }
   }
-
   handleChange(e) {
     console.log('typing', e.target.value);
     this.setState({
@@ -22,14 +21,15 @@ class AddUser extends Component {
       let id = 0;
       users.push({id: id++, nickname: e.target.value});
       this.setState({users});
-      console.log('users', users);
+      this.props.onChange(users);
+      // console.log('users', users);
     }
   }
   render() {
     return (
       <form>
         <label htmlFor="nickname">Nickname</label>
-        <input className="form__input" type="text" id="nickname" value={this.state.value} minLength="1" maxLength="8" onChange={this.handleChange.bind(this)} onKeyPress={this.addUser.bind(this)} required />
+        <input className="form__input" type="text" id="nickname" value={this.props.value} onKeyPress={this.addUser.bind(this)} onChange={this.handleChange.bind(this)} minLength="1" maxLength="8" required />
       </form>
     );
   }

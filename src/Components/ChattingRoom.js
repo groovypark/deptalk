@@ -19,10 +19,10 @@ class ChattingRoom extends Component {
         }
       ]
     }
-    
+
     this.handeCreate = this.handleCreate.bind(this);
   }
-  
+
   handleCreate = (chat) => {
     const { chattingList } = this.state;
     this.setState({
@@ -32,10 +32,14 @@ class ChattingRoom extends Component {
     })
   }
   render() {
+    console.log(this.props);
+    console.log(this.props.location.state.user[0].nickname);
+    console.log(this.state);
     return (
       <div>
         <ChatForm onCreate={this.handleCreate} />
         <ChatInfoList data={this.state.chattingList}/>
+        <p>{this.props.location.state.user[0].nickname}</p>
       </div>
     )
   }
