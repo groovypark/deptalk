@@ -1,23 +1,28 @@
 import React, { Component } from 'react'
 import ChatInfo from './ChatInfo';
 
-export default 
+function ChatInfoList(props) {
 
-class ChatInfoList extends Component {
-  static defaultProps = {
-    data: []
-  }
-
-  render() {
-    const { data } = this.props;
-    const list = data.map(
-      (info, index) => (<ChatInfo key={index} info={info}/>)
-    );
-
+    // if (props.newMessage !== undefined) {
+    //   console.log('chatlist', props.newMessage);
+    // }
+    if (props.data !== undefined) {
+      console.log(props.data);
+      const oldMessage = props.data;
+      const list = oldMessage.map((info, index) => { return (<ChatInfo key={index} info={info}/>)
+      }
+      )
     return (
-      <div>
-        {list}    
-      </div>
+        <ul className="message__list">
+          {list}
+        </ul>
     );
-  }
+    } else {
+      return <div>empty</div>;
+    };
+
+
+
 }
+
+export default ChatInfoList;

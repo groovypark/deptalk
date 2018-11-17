@@ -45,8 +45,8 @@ class ChattingRoom extends Component {
     }
 
     this.socket.onmesssage = event => {
-      console.log(event);
-      this.setState({ chattingList: event });
+      console.log('event', event);
+      this.setState({ newMessage: event });
     }
   }
 
@@ -65,7 +65,8 @@ class ChattingRoom extends Component {
     }
   }
   render() {
-    console.log('check', this.state);
+    console.log('check state', this.state);
+    console.log('check', this.state.list);
     return (
       <div>
         <p>{this.props.location.state.user[0].nickname}</p>
@@ -73,7 +74,7 @@ class ChattingRoom extends Component {
           <UserInfoList data={this.state.userList}/>
         </div>
         <div style={{width:'70%', float:'right'}}>
-          <ChatInfoList data={this.state.chattingList}/>
+          <ChatInfoList data={this.state.list} />
         </div>
         <div style={{position:'absolute', bottom:'0', width:'100%', height:'70px'}}>
           <ChatForm onSubmit={this.sendMessage.bind(this)} />

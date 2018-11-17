@@ -13,7 +13,7 @@ export default class ChatForm extends Component {
     this.setState({
       text: e.target.value
     });
-    console.log('in chatform', this.state);
+  // console.log('in chatform', this.state);
     this.props.onSubmit(this.state.text);
   }
   render() {
