@@ -48,7 +48,7 @@ class ChattingRoom extends Component {
       // 유저가 채팅방에 접속함을 알림
       this.socket.send(JSON.stringify({
         type: 'active_user',
-        user: '재원',
+        user: this.state.user
       }))
     }
 
@@ -62,11 +62,11 @@ class ChattingRoom extends Component {
     const newMessage = {
       // id: id++,
       type: 'send_message',
-      user: '재원',
+      user: this.state.user,
       message: newChat
     }
     this.setState({ message: newMessage });
-
+    console.log('in room', newMessage);
     if (this.socket.readyState === WebSocket.OPEN) {
       this.socket.send(JSON.stringify(newMessage));
     }
@@ -82,7 +82,7 @@ class ChattingRoom extends Component {
           <ChatInfoList data={this.state.chattingList}/>
         </div>
         <div style={{position:'absolute', bottom:'0', width:'100%', height:'70px'}}>
-          <ChatForm onSubmit={this.sendMessage} />
+          <ChatForm onSubmit={this.sendMessage.bind(this)} />
         </div>
       </div>
     )
