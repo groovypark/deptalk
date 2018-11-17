@@ -37,27 +37,19 @@ class ChattingRoom extends Component {
       })
     })
 
-    this.socket = new WebSocket('ws://125.132.216.192:8000/chat/1');
+    this.socket = new WebSocket(`ws://125.132.216.192:8000/chat/1/${this.state.user}`);
     this.socket.onopen = event => {
-      // 유저가 채팅방에 접속함을 알림
-      this.socket.send(JSON.stringify({
-        type: 'active_user',
-        user: this.state.user,
-      }))
+
     }
 
-    this.socket.onmesssage = event => {
+    this.socket.onmessage = event => {
       console.log('event', event);
-      this.setState({ newMessage: event });
     }
   }
 
   sendMessage(newChat) {
     // let id = 0;
     const newMessage = {
-      // id: id++,
-      type: 'send_message',
-      user: this.state.user,
       message: newChat
     }
     this.setState({ message: newMessage });
