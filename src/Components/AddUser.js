@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
+import './AddUser.css';
 
 class AddUser extends Component {
   constructor(props) {
@@ -13,6 +14,7 @@ class AddUser extends Component {
     this.setState({
       value: e.target.value
     })
+    this.props.onChange(this.state.value);
   }
   addUser(e) {
     if (e.key === 'Enter') {
@@ -21,16 +23,19 @@ class AddUser extends Component {
       let id = 0;
       users.push({id: id++, nickname: e.target.value});
       this.setState({users});
-      this.props.onChange(users);
+      this.props.onSubmit(users);
       // console.log('users', users);
     }
   }
   render() {
     return (
-      <form>
-        <label htmlFor="nickname">Nickname</label>
-        <input className="form__input" type="text" id="nickname" value={this.props.value} onKeyPress={this.addUser.bind(this)} onChange={this.handleChange.bind(this)} minLength="1" maxLength="8" required />
-      </form>
+      <Fragment>
+        <h1 className="user__title">닉네임을 입력해주세요.</h1>
+        <form className="user__form">
+          <label className="a11y-hidden" htmlFor="nickname">Nickname</label>
+          <input className="user__input" type="text" id="nickname" value={this.props.value} onKeyPress={this.addUser.bind(this)} onChange={this.handleChange.bind(this)} minLength="1" maxLength="8" required />
+        </form>
+      </Fragment>
     );
   }
 }

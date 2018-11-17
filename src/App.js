@@ -9,15 +9,20 @@ class App extends Component {
     super(props);
     this.state = {}
   }
+  getValue(newValue) {
+    this.setState({ value: newValue });
+  }
   getUsers(newUser) {
     this.setState({ user: newUser });
   }
   render() {
     return (
-      <Fragment>
-        <AddUser onChange={this.getUsers.bind(this)} />
-        <Link to={{pathname: '/chatting', state: {user: this.state.user} }}>채팅룸 입장</Link>
-      </Fragment>
+      <div className="container">
+        <div className="user__container">
+          <AddUser onChange={this.getValue.bind(this)} onSubmit={this.getUsers.bind(this)} />
+          <Link className="button__chat" to={{pathname: '/chatting', state: {user: this.state.value} }}>채팅룸 입장</Link>
+        </div>
+      </div>
     );
   }
 }
