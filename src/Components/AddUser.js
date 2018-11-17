@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
+// import { Redirect } from 'react-router-dom';
 
 class AddUser extends Component {
   constructor(props) {
@@ -27,7 +27,7 @@ class AddUser extends Component {
       users.push({id: id++, nickname: e.target.value});
       this.setState({users});
       console.log('users', users);
-      return <Redirect to='/chattingroom' />
+      // return <Redirect to='/chattingroom' />
     }
   }
   render() {
