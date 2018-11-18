@@ -23,12 +23,9 @@ export default class ChatForm extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     this.setState({
-      text: e.target.value
+      text: ""
     });
-    this.props.onSubmit(this.state.text);
-    this.setState({
-      text: ''
-    })
+    this.props.onSubmit(e.target.value.trim());
   }
 
   handleKeyPress = (e) => {
@@ -45,7 +42,7 @@ export default class ChatForm extends Component {
 
     return (
       <form className="chat__input_container"
-        onSubmit={this.handleSubmit}
+        // onSubmit={this.handleSubmit}
       >
         <Textarea className="chat__input_area"
           value={this.state.text}
@@ -53,7 +50,8 @@ export default class ChatForm extends Component {
           onKeyUp={this.handleKeyPress}
           name="chat"
         />
-        <button className={ text !== undefined && text.length > 1  ? 'chat__input_button_active' : 'chat__input_button' } type="submit">등록</button>
+        <button className={ text !== undefined && text.length > 1  ? 'chat__input_button_active' : 'chat__input_button' } 
+          type="button" onClick={this.handleSubmit}>등록</button>
       </form>
     );
   }
